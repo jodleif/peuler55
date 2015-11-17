@@ -1,5 +1,6 @@
 #include "lychral.h"
 #include <boost/multiprecision/cpp_int.hpp>
+#include <boost/lexical_cast.hpp>
 
 
 #ifdef _DEBUG
@@ -47,7 +48,8 @@ uint128_t peuler::next_iter(uint128_t num)
 
 uint128_t peuler::reverse_number(uint128_t num)
 {
-	uint128_t reverse{ 0 };
+	uint128_t reverse;
+	reverse = 0u;
 	while(num!=0) {
 		reverse *= 10;
 		reverse += num % 10;
@@ -69,7 +71,6 @@ uint8_t peuler::num_len(uint128_t num)
 bool peuler::is_palindrome(uint128_t num)
 {
 	try {
-		//auto number = boost::lexical_cast<std::string>(num);
 		auto number = num.convert_to<std::string>();
 		auto check_len = number.size() / 2;
 		auto b_iter = number.rbegin(); // Iterator from end of string
@@ -99,8 +100,9 @@ bool peuler::is_lychral(uint128_t base)
 
 int peuler::number_of_lychrel()
 {
-	uint64_t limit{ 10000 };
-	uint128_t init_test{ 1 };
+	uint64_t limit{ 10000u };
+	uint128_t init_test;
+	init_test = 1u;
 	int sum{ 0 };
 	for (uint64_t i{ 1 };i < limit;++i) {
 		if (is_lychral(init_test)) ++sum;
