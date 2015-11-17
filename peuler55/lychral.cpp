@@ -75,12 +75,12 @@ bool peuler::is_palindrome(uint128_t num)
 		auto check_len = number.size() / 2;
 		auto b_iter = number.rbegin(); // Iterator from end of string
 		auto s_iter = number.begin(); // Iterator from start of string
-
+		auto e_iter = number.begin() + number.size() - 1;
 		for (uint64_t i{ 0 };i < check_len;++i) {
-			if(*b_iter!=*s_iter) {
+			if(*e_iter!=*s_iter) {
 				return false;
 			}
-			++b_iter; ++s_iter; // Increment iterators.
+			--e_iter; ++s_iter; // Increment iterators.
 		}
 	} catch (...) {
 		return false; // Incase boost lexical cast fails.
