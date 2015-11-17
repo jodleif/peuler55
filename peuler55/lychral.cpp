@@ -73,9 +73,8 @@ bool peuler::is_palindrome(uint128_t num)
 	try {
 		auto number = num.convert_to<std::string>();
 		auto check_len = number.size() / 2;
-		auto b_iter = number.rbegin(); // Iterator from end of string
 		auto s_iter = number.begin(); // Iterator from start of string
-		auto e_iter = number.begin() + number.size() - 1;
+		auto e_iter = s_iter + number.size() - 1; // iterator at end of string
 		for (uint64_t i{ 0 };i < check_len;++i) {
 			if(*e_iter!=*s_iter) {
 				return false;
