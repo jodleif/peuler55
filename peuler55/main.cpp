@@ -51,10 +51,8 @@ void tests()
 int main()
 {
 
-	std::wcout << L"Project Euler 55 - Jo Øivind Gjernes\n"
-		<< L"Press ANY key to exit\n";
+	std::cout << "Project Euler 55 \n";
 	tests();
 	std::cout << "There are: " << peuler::number_of_lychrel() << " below 10 000\n";
-	std::cin.get();
 	return 0;
 }
