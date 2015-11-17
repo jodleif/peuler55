@@ -30,12 +30,28 @@ How many Lychrel numbers are there below ten-thousand?
 NOTE: Wording was modified slightly on 24 April 2007 to emphasise the theoretical nature of Lychrel numbers.
 */
 #include <iostream>
+#include <cassert>
+#include "lychral.h"
+
+void tests()
+{
+#ifdef _DEBUG
+	test_num_len();
+	std::cout << "NUM LEN OK!\n";
+	test_reverse_number();
+	std::cout << "Reverse num OK!\n";
+	test_is_palindrome();
+	std::cout << "Is palindrome ok!\n";
+#endif
+}
 
 // Entry point...
 int main()
 {
+
 	std::cout << "Project Euler 55 - Jo Øivind Gjernes\n"
 		<< "Press ANY key to exit\n";
+	tests();
 	std::cin.get();
 	return 0;
 }
