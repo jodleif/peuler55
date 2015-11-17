@@ -40,6 +40,7 @@ void test_is_lychral()
 
 
 using boost::multiprecision::uint128_t;
+
 uint128_t peuler::next_iter(uint128_t num)
 {
 	return num + reverse_number(num);
@@ -74,7 +75,7 @@ bool peuler::is_palindrome(uint128_t num)
 		auto b_iter = number.rbegin(); // Iterator from end of string
 		auto s_iter = number.begin(); // Iterator from start of string
 
-		for (auto i{ 0 };i < check_len;++i) {
+		for (uint64_t i{ 0 };i < check_len;++i) {
 			if(*b_iter!=*s_iter) {
 				return false;
 			}
@@ -89,7 +90,7 @@ bool peuler::is_palindrome(uint128_t num)
 bool peuler::is_lychral(uint128_t base)
 {
 	auto tmp = next_iter(base);
-	for (auto i{ 0 };i < 50;++i) {
+	for (uint_fast8_t i{ 0 };i < 50u;++i) {
 		if (is_palindrome(tmp)) return false;
 		tmp = next_iter(tmp);
 	}
