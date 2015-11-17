@@ -1,5 +1,4 @@
 #include "lychral.h"
-#include <boost/lexical_cast.hpp>
 #include <boost/multiprecision/cpp_int.hpp>
 
 
@@ -70,7 +69,8 @@ uint8_t peuler::num_len(uint128_t num)
 bool peuler::is_palindrome(uint128_t num)
 {
 	try {
-		auto number = boost::lexical_cast<std::string>(num);
+		//auto number = boost::lexical_cast<std::string>(num);
+		auto number = num.convert_to<std::string>();
 		auto check_len = number.size() / 2;
 		auto b_iter = number.rbegin(); // Iterator from end of string
 		auto s_iter = number.begin(); // Iterator from start of string
