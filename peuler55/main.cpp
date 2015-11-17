@@ -32,6 +32,7 @@ NOTE: Wording was modified slightly on 24 April 2007 to emphasise the theoretica
 #include <iostream>
 #include <cassert>
 #include "lychral.h"
+#include "bench_timer.h"
 
 void tests()
 {
@@ -53,6 +54,7 @@ int main()
 
 	std::cout << "Project Euler 55 \n";
 	tests();
+	bench_timer b;
 	std::cout << "There are: " << peuler::number_of_lychrel() << " below 10 000\n";
 	return 0;
 }

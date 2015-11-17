@@ -21,9 +21,15 @@
     <ClCompile Include="lychral.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bench_timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lychral.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bench_timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
