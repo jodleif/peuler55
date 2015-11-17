@@ -8,7 +8,7 @@
 #include <iostream>
 void test_num_len()
 {
-	assert(peuler::num_len(123u) == 3u, "123u != 3u");
+	assert(peuler::num_len(123u) == 3u);
 	std::cout << "num len 123u = 3u Ok!\n";
 	assert(peuler::num_len(1u) == 1u);
 	std::cout << "Num len 1u ok!\n";
@@ -28,6 +28,13 @@ void test_is_palindrome()
 	assert(peuler::is_palindrome(121u));
 	assert(!peuler::is_palindrome(1234123u));
 	assert(peuler::is_palindrome(7337u));
+	assert(peuler::is_palindrome(boost::multiprecision::uint128_t{ "4668731596684224866951378664" }));
+}
+
+void test_is_lychral()
+{
+	assert(peuler::is_lychral(196u));
+	assert(!peuler::is_lychral(349u));
 }
 #endif
 
@@ -64,22 +71,39 @@ bool peuler::is_palindrome(uint128_t num)
 	try {
 		auto number = boost::lexical_cast<std::string>(num);
 		auto check_len = number.size() / 2;
-		auto b_iter = number.rbegin();
-		auto s_iter = number.begin();
+		auto b_iter = number.rbegin(); // Iterator from end of string
+		auto s_iter = number.begin(); // Iterator from start of string
+
 		for (auto i{ 0 };i < check_len;++i) {
 			if(*b_iter!=*s_iter) {
 				return false;
 			}
-			++b_iter;
-			++s_iter;
+			++b_iter; ++s_iter; // Increment iterators.
 		}
 	} catch (...) {
-		return false;
+		return false; // Incase boost lexical cast fails.
+	}
+	return true;
+}
+
+bool peuler::is_lychral(uint128_t base)
+{
+	auto tmp = next_iter(base);
+	for (auto i{ 0 };i < 50;++i) {
+		if (is_palindrome(tmp)) return false;
+		tmp = next_iter(tmp);
 	}
 	return true;
 }
 
 int peuler::number_of_lychrel()
 {
-	return 0;
+	uint64_t limit{ 10000 };
+	uint128_t init_test{ 1 };
+	int sum{ 0 };
+	for (uint64_t i{ 1 };i < limit;++i) {
+		if (is_lychral(init_test)) ++sum;
+		++init_test;
+	}
+	return sum;
 }
